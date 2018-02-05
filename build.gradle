@@ -1,0 +1,77 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.10.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+		maven {
+			url "https://plugins.gradle.org/m2"
+		}
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath "com.moowork.gradle:gradle-node-plugin:1.1.1"
+	}
+}
+apply plugin: 'com.moowork.node'
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+
+group = 'com.saprello.springboot'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+	compile('org.springframework.boot:spring-boot-starter-data-rest')
+	compile('org.springframework.boot:spring-boot-starter-freemarker')
+	compile('org.springframework.boot:spring-boot-starter-groovy-templates')
+	compile('org.springframework.boot:spring-boot-starter-jdbc')
+	compile('org.springframework.boot:spring-boot-starter-jersey')
+	compile('org.springframework.boot:spring-boot-starter-mustache')
+	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+	compile('org.springframework.boot:spring-boot-starter-web')
+	runtime('com.h2database:h2')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+
+node {
+	version = '6.11.3'
+	download = true
+	nodeModulesDir = file('frontend')
+}
+
+task buildClientDev(type: NpmTask, dependsOn: 'npmInstall' ) {
+	group = 'build'
+	description = 'Complile client side effects for development'
+	args = ['run', 'buildDev']
+}
+
+task buildClient(type: NpmTask, dependsOn: 'npmInstall' ) {
+	group = 'build'
+	description = 'Complile client side effects for production'
+	args = ['run', 'build']
+}
+
+task buildClientWatch(type: NpmTask, dependsOn: 'npmInstall' ) {
+	group = 'application'
+	description = 'Complile client side effects for rebuilding'
+	args = ['run', 'buildWacth']
+}
+
+task buildTest(type: NpmTask, dependsOn: 'npmInstall' ) {
+	group = 'verification'
+	description = 'Complile client side unit tests'
+	args = ['run', 'test']
+}
+
+bootRun.dependsOn(buildClientDev)
+
+jar.dependsOn(buildClient)
