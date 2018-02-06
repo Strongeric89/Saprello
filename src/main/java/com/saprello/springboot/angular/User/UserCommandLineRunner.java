@@ -33,7 +33,8 @@ public class UserCommandLineRunner implements CommandLineRunner {
                 //Name: System.out.println(allUsers.getString(2));
                 //Email:System.out.println(allUsers.getString(3));
                 //Password: System.out.println(allUsers.getString(4));
-                repository.save(new User(allUsers.getString(2), allUsers.getString(3), allUsers.getString(4), allUsers.getLong(5)));
+                repository.save(new User(allUsers.getString(2), allUsers.getString(3), allUsers.getString(4), 
+                		allUsers.getLong(5)));
             }
     		
     		
