@@ -8,6 +8,10 @@ import java.sql.SQLException;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+<<<<<<< HEAD
+=======
+import java.sql.*;
+>>>>>>> branches/josh1
 
 @SpringBootApplication
 public class AngularApplication {
@@ -17,8 +21,25 @@ public class AngularApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(AngularApplication.class, args);
+		
 	}
 	
+	public static Connection dbConnection() {
+        Connection connection = null;
+	   try {
+	       connection = DriverManager.getConnection("jdbc:sap://10.47.247.11:31715/?autocommit=false", "AUTOTEST", "Manager2");
+	   } catch (SQLException e) {
+	       System.err.println("Connection Failed. User/Passwd Error? Message: " + e.getMessage());
+	   }
+	   if (connection != null) {
+	           System.out.println("Connection to HANA successful!");
+	               return connection; 
+	   }
+   
+   		return connection;
+	}
+	
+<<<<<<< HEAD
 	//Method to create a connection with the hana database
 	public static Connection dbConnection() {
 		Connection connection = null;
@@ -33,5 +54,8 @@ public class AngularApplication {
         }
         return connection;
 	}
+=======
+	
+>>>>>>> branches/josh1
 }
 
