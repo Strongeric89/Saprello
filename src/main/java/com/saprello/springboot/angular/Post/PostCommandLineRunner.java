@@ -7,27 +7,15 @@ import org.springframework.stereotype.Component;
 import com.saprello.springboot.angular.AngularApplication;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
-
-import org.springframework.boot.CommandLineRunner;
-
-@Component
-public class PostCommandLineRunner implements CommandLineRunner {
-	private final PostRepository repository;
-    
-    
-    //Creates a repository to store results from database query
-
-
-import com.saprello.springboot.angular.AngularApplication;
-
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.stream.Stream;
 
 import org.springframework.boot.CommandLineRunner;
-import java.sql.*;
-import java.time.LocalDateTime;
+
 @Component
 public class PostCommandLineRunner implements CommandLineRunner {
 
@@ -54,9 +42,9 @@ public class PostCommandLineRunner implements CommandLineRunner {
     		
     	}
             //need to replace gets all repository.findAll().forEach(System.out::println);
-    }
     
-}
+    
+
 
 
     	
@@ -208,10 +196,9 @@ public class PostCommandLineRunner implements CommandLineRunner {
     
     
     
-    
-    
-   
 }
+
+   
 
 
 
