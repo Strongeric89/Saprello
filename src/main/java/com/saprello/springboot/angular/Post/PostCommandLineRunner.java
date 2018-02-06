@@ -43,11 +43,6 @@ public class PostCommandLineRunner implements CommandLineRunner {
                 System.err.println("Query failed!");
             }
 
-        /*Stream.of("Post1", "Post2", "Post3", "Post4",
-                "Post5", "Post6", "Post7").forEach(name ->
-                repository.save(new Post(name))
-        );
-        */
             repository.findAll().forEach(System.out::println);
         }
 
