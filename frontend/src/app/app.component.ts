@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import {PostService} from "./shared/post/post.service";
+import { PostService } from "./shared/post/post.service";
 import { DragulaService } from 'ng2-dragula/ng2-dragula';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -8,6 +9,7 @@ import { DragulaService } from 'ng2-dragula/ng2-dragula';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
   title = 'Project Management Saprello';
   card = 'Card Name';

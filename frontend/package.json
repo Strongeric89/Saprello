@@ -24,7 +24,10 @@
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
     "@ng-bootstrap/ng-bootstrap": "^1.0.0",
+<<<<<<< HEAD
     "bootstrap": "^4.0.0-alpha.6",
+=======
+>>>>>>> branches/ben
     "core-js": "^2.4.1",
     "jquery": "^3.3.1",
     "ng2-dragula": "^1.5.0",
