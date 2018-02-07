@@ -7,8 +7,8 @@ export class PostService {
 
   constructor (private http: HttpClient){}
 
-  getAll(): Observable<any> {
-    return this.http.get('http://localhost:8080/endpoint');
-}
+      getAll(): Observable<any> {
+        return this.http.get('http://localhost:8080/endpoint');
+    }
 
 }
