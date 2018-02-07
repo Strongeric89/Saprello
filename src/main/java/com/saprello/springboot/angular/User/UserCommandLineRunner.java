@@ -16,7 +16,7 @@ import org.springframework.boot.CommandLineRunner;
 public class UserCommandLineRunner implements CommandLineRunner {
 	private final UserRepository repository;
     
-    
+
     //Creates a repository to store results from database query
     public UserCommandLineRunner(UserRepository repository) {
         this.repository = repository;
