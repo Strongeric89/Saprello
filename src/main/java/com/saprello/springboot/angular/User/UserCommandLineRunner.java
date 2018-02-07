@@ -29,15 +29,9 @@ public class UserCommandLineRunner implements CommandLineRunner {
     	if(connection != null) {
     		ResultSet allUsers = getAllUser(connection);
     		while (allUsers.next()) {
-                //ID: System.out.println(allUsers.getString(1));
-                //Name: System.out.println(allUsers.getString(2));
-                //Email:System.out.println(allUsers.getString(3));
-                //Password: System.out.println(allUsers.getString(4));
                 repository.save(new User(allUsers.getString(2), allUsers.getString(3), allUsers.getString(4), 
                 		allUsers.getLong(5)));
-            }
-    		
-    		
+            }	
     	}
     		repository.findAll().forEach(System.out::println);
     } 
@@ -57,5 +51,34 @@ public class UserCommandLineRunner implements CommandLineRunner {
             }
     	}
 		return allUsers;
+    }
+    
+    public static int createUser(User user) {
+    	//System.out.print("NAME IS: " + user.getUserName());
+
+    	String sql = "INSERT INTO SAPRELLO.USER (USER_ID, NAME, EMAIL, USERPASSWORD, GROUP_ID) VALUES ( '" 
+    	    	+ user.getId() + "' , '" + user.getUserName() + "' , '" + user.getEmail() 
+    	    	+ "' , '" + user.getPassword() + "' , '" + user.getGroupId() + "' );";
+    	
+    	Connection conn = AngularApplication.dbConnection();
+    	//ResultSet allUsers = null;
+    	if(conn != null) {
+    		try {
+    			//Exceutes sql query and equals result to resultset and returns
+    			System.out.println(sql);
+    			System.out.println(user.toString());
+	    		Statement stmt = conn.createStatement();
+	    		stmt.executeUpdate(sql);
+	    		stmt.executeUpdate("COMMIT;");
+	    		return 1;
+	    		
+    		} catch (SQLException e) {
+    			//Query error
+    			System.err.println(e.toString());
+                System.err.println("Query failed!");
+            }
+    	}
+    	return 0;
+
     }
 }

@@ -14,7 +14,7 @@ public class PostController {
         this.repository = repository;
     }
 
-    @GetMapping("/endpoint")
+    @GetMapping("/api/posts")
     public Collection<Post> endPoint() {
         return repository.findAll().stream().collect(Collectors.toList());
     }
